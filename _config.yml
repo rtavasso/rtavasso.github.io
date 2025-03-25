@@ -2,7 +2,7 @@ title: Blog
 description: Consciousness, Music, and AI
 author: Riley Tavassoli
 email: rtavassoli99@gmail.com
-baseurl: "/rtavasso.github.io" # the subpath of your site
+baseurl: "" # the subpath of your site
 url: "https://rtavasso.github.io" # the base hostname & protocol
 
 # Build settings
