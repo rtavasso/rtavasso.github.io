@@ -1,0 +1,21 @@
+title: Blog
+description: Consciousness, Music, and AI
+author: Riley Tavassoli
+email: rtavassoli99@gmail.com
+baseurl: "/rtavasso.github.io" # the subpath of your site
+url: "https://rtavasso.github.io" # the base hostname & protocol
+
+# Build settings
+markdown: kramdown
+theme: minima
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - .git/ 
