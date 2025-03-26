@@ -22,7 +22,6 @@ plugins:
 
 # SEO settings
 social:
-  name: Riley Tavassoli
   links:
     - https://github.com/rtavasso
     - https://www.linkedin.com/in/rtavasso/

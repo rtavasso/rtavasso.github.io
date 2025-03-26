@@ -1,0 +1,12 @@
+{%- if page.title -%}
+  <title>{{ page.title }} - {{ site.title }}</title>
+{%- else -%}
+  <title>{{ site.title }}</title>
+{%- endif -%}
+<link rel="icon" type="image/svg+xml" href="{{ '/favicon.svg' | relative_url }}">
+{%- seo title=false -%}
+<link rel="stylesheet" href="{{ "/assets/main.css" | relative_url }}">
+{%- feed_meta -%}
+{%- if jekyll.environment == 'production' and site.google_analytics -%}
+  {%- include google-analytics.html -%}
+{%- endif -%} 
