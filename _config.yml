@@ -1,9 +1,17 @@
-title: Blog
-description: Consciousness, Music, and AI
-author: Riley Tavassoli
+title: "Riley Tavassoli"
+description: "Consciousness, Music, and Artificial Intelligence"
 email: rtavassoli99@gmail.com
-baseurl: "" # the subpath of your site
-url: "https://rtavasso.github.io" # the base hostname & protocol
+baseurl: ""
+url: "https://rtavasso.github.io"
+
+# Social links
+github_username: rtavasso
+linkedin_username: rtavasso
+
+# Site settings
+show_excerpts: true
+permalink: /:year/:month/:day/:title/
+timezone: America/New_York
 
 # Build settings
 markdown: kramdown
@@ -11,6 +19,14 @@ theme: minima
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
+  - jekyll-sitemap
+
+# SEO settings
+social:
+  name: Riley Tavassoli
+  links:
+    - https://github.com/rtavasso
+    - https://www.linkedin.com/in/rtavasso/
 
 # Exclude from processing
 exclude:
