@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 680">
+  <!-- Background and title -->
+  <rect width="900" height="680" fill="#ffffff"/>
+  <text x="450" y="30" font-family="Arial" font-size="20" text-anchor="middle" font-weight="bold">Control Flow and Generation Cycle</text>
+
+  <!-- Start node -->
+  <circle cx="450" cy="80" r="25" fill="#e6ffe6" stroke="#009900" stroke-width="2"/>
+  <text x="450" y="85" font-family="Arial" font-size="14" text-anchor="middle">Start</text>
+
+  <!-- Initialization -->
+  <rect x="350" y="130" width="200" height="80" fill="#f9f9f9" stroke="#999999" stroke-width="2" rx="10"/>
+  <text x="450" y="155" font-family="Arial" font-size="16" text-anchor="middle" font-weight="bold">Initialization (t=0)</text>
+  <text x="450" y="180" font-family="Arial" font-size="12" text-anchor="middle">Text_Input(0) = Problem Description</text>
+  <text x="450" y="200" font-family="Arial" font-size="12" text-anchor="middle">R_final(-1) = Initial State</text>
+
+  <!-- State Refinement -->
+  <!-- Box coordinates: x=250, y=240, width=400, height=120 -->
+  <!-- Left edge midpoint: (250, 300) -->
+  <rect x="250" y="240" width="400" height="120" fill="#e6f2ff" stroke="#0066cc" stroke-width="2" rx="10"/>
+  <text x="450" y="265" font-family="Arial" font-size="16" text-anchor="middle" font-weight="bold">State Refinement</text>
+  <text x="450" y="290" font-family="Arial" font-size="12" text-anchor="middle">1. Combine R_final(t-1) with Text_Input(t)</text>
+  <text x="450" y="310" font-family="Arial" font-size="12" text-anchor="middle">2. Perform k internal refinement cycles using</text>
+  <text x="450" y="330" font-family="Arial" font-size="12" text-anchor="middle">   unmasked self-attention within state R</text>
+  <text x="450" y="350" font-family="Arial" font-size="12" text-anchor="middle">3. Output refined state R_final(t)</text>
+
+  <!-- Generation -->
+  <rect x="250" y="390" width="400" height="90" fill="#f2f2f9" stroke="#6600cc" stroke-width="2" rx="10"/>
+  <text x="450" y="415" font-family="Arial" font-size="16" text-anchor="middle" font-weight="bold">Generation</text>
+  <text x="450" y="440" font-family="Arial" font-size="12" text-anchor="middle">Generative Model takes R_final(t) as input and produces</text>
+  <text x="450" y="460" font-family="Arial" font-size="12" text-anchor="middle">JSON_Output(t) = { content, isAnswer }</text>
+
+  <!-- Decision Diamond -->
+  <polygon points="450,510 500,550 450,590 400,550" fill="#ffffcc" stroke="#cc9900" stroke-width="2"/>
+  <text x="450" y="555" font-family="Arial" font-size="14" text-anchor="middle">isAnswer?</text>
+
+  <!-- Final Answer (True) - ENLARGED -->
+  <rect x="550" y="520" width="270" height="70" fill="#ffcccc" stroke="#cc0000" stroke-width="2" rx="10"/>
+  <text x="685" y="550" font-family="Arial" font-size="14" text-anchor="middle">Final_Answer = JSON_Output(t).content</text>
+  <text x="685" y="575" font-family="Arial" font-size="12" text-anchor="middle">Terminate Process</text>
+
+  <!-- Intermediate Step (False) - ENLARGED -->
+  <!-- Box coordinates: x=80, y=520, width=270, height=70 -->
+  <!-- Left edge midpoint: (80, 555) -->
+  <rect x="80" y="520" width="270" height="70" fill="#e6ffe6" stroke="#009900" stroke-width="2" rx="10"/>
+  <text x="215" y="550" font-family="Arial" font-size="14" text-anchor="middle">Text_Input(t+1) = JSON_Output(t).content</text>
+  <text x="215" y="575" font-family="Arial" font-size="12" text-anchor="middle">Increment t and continue</text>
+
+  <!-- End node - REPOSITIONED to avoid arrow overlap -->
+  <circle cx="685" cy="640" r="25" fill="#ffcccc" stroke="#cc0000" stroke-width="2"/>
+  <text x="685" y="645" font-family="Arial" font-size="14" text-anchor="middle">End</text>
+
+  <!-- Arrow definitions -->
+  <defs>
+    <marker id="arrowheadBlack" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#000000"/>
+    </marker>
+    <marker id="arrowheadGreen" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#009900"/>
+    </marker>
+    <marker id="arrowheadRed" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#cc0000"/>
+    </marker>
+  </defs>
+
+  <!-- Arrows -->
+  <line x1="450" y1="105" x2="450" y2="130" stroke="#000000" stroke-width="2" marker-end="url(#arrowheadBlack)"/>
+  <line x1="450" y1="210" x2="450" y2="240" stroke="#000000" stroke-width="2" marker-end="url(#arrowheadBlack)"/>
+  <line x1="450" y1="360" x2="450" y2="390" stroke="#000000" stroke-width="2" marker-end="url(#arrowheadBlack)"/>
+  <line x1="450" y1="480" x2="450" y2="510" stroke="#000000" stroke-width="2" marker-end="url(#arrowheadBlack)"/>
+
+  <!-- Decision arrows -->
+  <line x1="500" y1="550" x2="550" y2="550" stroke="#cc0000" stroke-width="2" marker-end="url(#arrowheadRed)"/>
+  <text x="525" y="540" font-family="Arial" font-size="12" text-anchor="middle">True</text>
+
+  <line x1="400" y1="550" x2="350" y2="550" stroke="#009900" stroke-width="2" marker-end="url(#arrowheadGreen)"/>
+  <text x="375" y="540" font-family="Arial" font-size="12" text-anchor="middle">False</text>
+
+  <!-- Arrow from Final Answer to End circle -->
+  <line x1="685" y1="590" x2="685" y2="615" stroke="#cc0000" stroke-width="2" marker-end="url(#arrowheadRed)"/>
+
+  <!-- Loop back (FIXED: From midpoint of LEFT edge) -->
+  <!-- Path: M(Start at 80,555) L(Left) L(Up) L(End/Connect at 250,300) -->
+  <path d="M 80 555 L 60 555 L 60 300 L 250 300" fill="none" stroke="#009900" stroke-width="2" marker-end="url(#arrowheadGreen)"/>
+
+</svg>

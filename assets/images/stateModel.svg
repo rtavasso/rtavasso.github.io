@@ -1,0 +1,86 @@
+<svg viewBox="0 0 1150 750" xmlns="http://www.w3.org/2000/svg" font-family="Arial, sans-serif">
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L10,3.5 L0,7 Z" fill="#333" />
+    </marker>
+    <marker id="loophead" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L10,3.5 L0,7 Z" fill="#d84315" />
+    </marker>
+    <style>
+      .box-state { fill: #e0f7fa; stroke: #00796b; stroke-width: 2; rx: 10; }
+      .box-input { fill: #e8f5e9; stroke: #2e7d32; stroke-width: 2; rx: 10; }
+      .box-process-outer { fill: #fff3e0; stroke: #ef6c00; stroke-width: 2.5; rx: 12; }
+      .box-process-inner { fill: #ffe0b2; stroke: #e65100; stroke-width: 1.5; rx: 10; }
+      .arrow { stroke: #333; stroke-width: 2; marker-end: url(#arrowhead); fill: none; }
+      .arrow-loop { stroke: #d84315; stroke-width: 2.5; fill: none; marker-end: url(#loophead); }
+      .text-label { fill: #212121; text-anchor: middle; font-size: 18px; dominant-baseline: central; }
+      .text-label-small { fill: #424242; text-anchor: middle; font-size: 16px; dominant-baseline: central; }
+      .text-title { fill: #000; text-anchor: middle; font-size: 24px; font-weight: bold; }
+      .text-arrow-label { fill: #333; text-anchor: middle; font-size: 14px; }
+      .text-loop-label { fill: #d84315; text-anchor: middle; font-size: 16px; font-weight: bold; }
+      .text-attn-label { fill: #c62828; text-anchor: middle; font-size: 16px; font-weight: bold; }
+      .arrow-label-bg { fill: white; rx: 6; stroke: #ddd; stroke-width: 1; opacity: 0.85; }
+      .dashed-connection { stroke: #c62828; stroke-width: 2; stroke-dasharray: 5,3; fill: none; }
+      .background { fill: #fbf8f3; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect x="0" y="0" width="1150" height="750" class="background" />
+
+  <!-- Title -->
+  <text x="575" y="50" class="text-title">State Model: Refined Attention Mechanism</text>
+
+  <!-- R(t) Internal Refinement Block (Outer) -->
+  <rect x="420" y="150" width="420" height="310" class="box-process-outer"/>
+  <text x="630" y="180" class="text-label" font-weight="bold">State R(t) - Internal Refinement</text>
+
+  <!-- R_final(t-1) State Block -->
+  <rect x="50" y="260" width="180" height="90" class="box-state"/>
+  <text x="140" y="285" class="text-label">R_final(t-1)</text>
+  <text x="140" y="315" class="text-label-small">(Previous Final State)</text>
+
+  <!-- R_final(t) Output Block -->
+  <rect x="950" y="260" width="180" height="90" class="box-state"/>
+  <text x="1040" y="285" class="text-label">R_final(t)</text>
+  <text x="1040" y="315" class="text-label-small">(Output State)</text>
+
+  <!-- Text Input Block -->
+  <rect x="540" y="540" width="180" height="90" class="box-input"/>
+  <text x="630" y="585" class="text-label">Text_Input(t)</text>
+
+  <!-- Inner State Representation Block R_internal -->
+  <rect x="520" y="210" width="220" height="90" class="box-process-inner"/>
+  <text x="630" y="255" class="text-label">R_internal(t, i)</text>
+
+  <!-- Masked Temporal Dependency Arrow -->
+  <path d="M 230 305 L 420 305" class="arrow"/>
+  <!-- Arrow label background -->
+  <rect x="265" y="245" width="130" height="50" class="arrow-label-bg"/>
+  <text x="330" y="260" class="text-arrow-label">Masked Temporal</text>
+  <text x="330" y="280" class="text-arrow-label">Dependency</text>
+
+  <!-- Text Input Dependency Arrow -->
+  <path d="M 630 540 L 630 460" class="arrow"/>
+
+  <!-- Output Arrow -->
+  <path d="M 840 305 L 950 305" class="arrow"/>
+
+  <!-- Internal Refinement Loop Arrow -->
+  <path d="M 630 300 C 630 350, 460 350, 460 270 C 460 230, 490 210, 520 210" class="arrow-loop" />
+
+  <!-- k cycles label -->
+  <!-- Coordinates: x=520, y=320, width=100, height=30 -->
+  <rect x="520" y="320" width="100" height="30" class="arrow-label-bg"/>
+  <text x="570" y="335" class="text-loop-label">k cycles</text>
+
+  <!-- Unmasked Attention Label - POSITIONED UNDER K CYCLES - BOX MADE BIGGER -->
+  <!-- Increased width to 200, height to 45. Adjusted x to re-center -->
+  <rect x="470" y="360" width="200" height="45" class="arrow-label-bg"/> <!-- width=200, height=45, x=470 -->
+  <text x="570" y="383" class="text-attn-label">Unmasked Self-Attention</text> <!-- y adjusted for new height (360 + 45/2) -->
+
+  <!-- Dashed connection - POINTS DOWNWARDS -->
+  <!-- Starts near k cycles (590, 335), ends near top-center of Unmasked attn (570, 360) -->
+  <path d="M 590 335 C 590 345, 580 355, 570 360" class="dashed-connection" />
+
+</svg>
